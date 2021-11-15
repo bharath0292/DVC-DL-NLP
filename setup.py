@@ -4,11 +4,10 @@ with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 ## edit below variables as per your requirements -
-REPO_NAME = "REPO_NAME"
+REPO_NAME = "DVC-DL-NLP"
 AUTHOR_USER_NAME = "bharath0292"
 SRC_REPO = "src"
-LIST_OF_REQUIREMENTS = []
-
+LIST_OF_REQUIREMENTS = ["tqdm","dvc","pandas","numpy","PyYAML","Scipy","scikit-learn","lxml"]
 
 setup(
     name=SRC_REPO,
