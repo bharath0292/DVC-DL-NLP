@@ -4,8 +4,8 @@ stages:
     cmd: python src/stage_01_prepare.py --config=configs/config.yaml --params=params.yaml
     deps:
     - path: configs/config.yaml
-      md5: c87418a546446ac0afba5150c6df1097
-      size: 375
+      md5: d06e9b63b9004c12139022649a6b507d
+      size: 454
     - path: data/data.xml
       md5: a304afb96060aad90176268345e10355
       size: 37891850
@@ -39,8 +39,8 @@ stages:
       md5: 553034c4cf40efc63c99c19fe98610d0
       size: 18986541
     - path: configs/config.yaml
-      md5: c87418a546446ac0afba5150c6df1097
-      size: 375
+      md5: d06e9b63b9004c12139022649a6b507d
+      size: 454
     - path: src/stage_02_featurization.py
       md5: f5cd1125ca016383a54a1a5e90bdb094
       size: 2994
@@ -68,8 +68,8 @@ stages:
       md5: 30c0f34f19273c212412655d72e44c2a
       size: 10134729
     - path: configs/config.yaml
-      md5: c87418a546446ac0afba5150c6df1097
-      size: 375
+      md5: d06e9b63b9004c12139022649a6b507d
+      size: 454
     - path: src/stage_03_train.py
       md5: ee706e8c768e92b7ae98e87b2096928c
       size: 2305
@@ -85,3 +85,33 @@ stages:
     - path: artifacts/model/model.pkl
       md5: 346085e40b8cf0389f3bb3fbb5690882
       size: 3553847
+  run_plots_command:
+    cmd: dvc plots diff
+  evaluate:
+    cmd: python src/stage_04_evaluate.py --config=configs/config.yaml --params=params.yaml
+    deps:
+    - path: artifacts/features/test.pkl
+      md5: 81164fa4daecfc05da4ad928f4144482
+      size: 2597441
+    - path: artifacts/model/model.pkl
+      md5: 346085e40b8cf0389f3bb3fbb5690882
+      size: 3553847
+    - path: configs/config.yaml
+      md5: d06e9b63b9004c12139022649a6b507d
+      size: 454
+    - path: src/stage_04_evaluate.py
+      md5: c6442a85390af5288f11f904697ee01f
+      size: 2970
+    - path: src/utils/common.py
+      md5: da75efcaa8787eb12aa16e9c351947cd
+      size: 1000
+    outs:
+    - path: prc.json
+      md5: 59817e33cb9aa6bc993f8e236c844c34
+      size: 130621
+    - path: roc.json
+      md5: 0495af292d1482b664807aa96b593bb6
+      size: 95592
+    - path: scores.json
+      md5: eb29dff54b2b3e5b36a8f63e2b1fd933
+      size: 80
