@@ -1,5 +1,5 @@
 # This contains params to be used by the stages to train or predict
 
 prepare:
-  split: 20
+  split: 0.2
   seed: 2021
